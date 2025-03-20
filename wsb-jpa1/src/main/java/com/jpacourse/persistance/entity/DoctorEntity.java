@@ -3,6 +3,10 @@ package com.jpacourse.persistance.entity;
 import com.jpacourse.persistance.enums.Specialization;
 
 import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "DOCTOR")
@@ -28,6 +32,8 @@ public class DoctorEntity {
 
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
+
+
 	private Specialization specialization;
 
 	public Long getId() {

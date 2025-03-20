@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -16,6 +17,10 @@ public class VisitEntity {
 
 	@Column(nullable = false)
 	private LocalDateTime time;
+
+	@OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "patient_number")
+	private List<AddressEntity> addressEntityList;
 
 	public Long getId() {
 		return id;
