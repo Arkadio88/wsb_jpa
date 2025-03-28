@@ -42,4 +42,6 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
+	@ManyToOne@JoinColumn(name = "visit_id", referencedColumnName = "id")
+	private VisitEntity visit;
 }
