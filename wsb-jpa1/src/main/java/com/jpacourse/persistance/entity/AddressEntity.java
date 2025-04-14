@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "ADDRESS")
 public class AddressEntity {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -90,5 +91,9 @@ public class PatientEntity {
 	optional = false) // default: true)
 	@JoinColumn(name="address_id", referencedColumnName = "id")
 	private AddressEntity address;
+
+	@OneToMany(fetch = FetchType.LAZY)// default: EAGER
+	@JoinColumn(name = "patient_id", referencedColumnName = "id")
+	private List<VisitEntity> visits;
 
 }
