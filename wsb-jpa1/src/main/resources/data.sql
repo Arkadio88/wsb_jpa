@@ -27,8 +27,8 @@ insert into patient (date_of_birth, address_id, id, email, first_name, last_name
                    (PARSEDATETIME('20.11.1985', 'dd.MM.yyyy'), 10, 06, 'tytoty@o2.pl', 'Artur', 'Anton', 106, 693378590, 'M');
 
 insert into visit (doctor_id, id, patient_id, time, description)
-            values (101, 1, 01, PARSEDATETIME('18:00', 'HH:mm'), 'badanie wstępne')
-            values (102, 2, 02, PARSEDATETIME('19:00', 'HH:mm'), 'badanie profilaktyczne');
+            values (101, 1, 01, PARSEDATETIME('18:00', 'HH:mm'), 'badanie wstępne');
+
 
 
 insert into medical_treatment (id, visit_id, description, type)
