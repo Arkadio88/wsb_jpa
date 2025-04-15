@@ -3,6 +3,7 @@ package com.jpacourse.persistance.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 @Entity
@@ -29,6 +30,9 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+
+	@Column(nullable = false)
+	private char gender;
 
 	public Long getId() {
 		return id;
@@ -86,14 +90,31 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
 	@OneToOne( cascade =  CascadeType.ALL, // default: empty
 	fetch = FetchType.LAZY, // default: EAGER
-	optional = false) // default: true)
+	optional = false) // default: true
 	@JoinColumn(name="address_id", referencedColumnName = "id")
 	private AddressEntity address;
 
-	@OneToMany(fetch = FetchType.LAZY)// default: EAGER
-	@JoinColumn(name = "patient_id", referencedColumnName = "id")
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private List<VisitEntity> visits;
 
+
+	public AddressEntity getAddress() { return (AddressEntity) address;
+	}
+
+	public VisitEntity getDoneVists() { return (VisitEntity) visits;
+	}
+	@Transient
+	public String getGenderAsString(){
+		switch (gender) {
+			case 'M' : return "MALE";
+			case 'F' : return "FEMALE";
+			default: return "UNKNOWN";
+		}
+	}
 }

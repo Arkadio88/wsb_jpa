@@ -18,12 +18,6 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
-	public boolean isDone() {
-		return isDone;
-	}
-
-	private boolean isDone;
-
 	public Long getId() {
 		return id;
 	}

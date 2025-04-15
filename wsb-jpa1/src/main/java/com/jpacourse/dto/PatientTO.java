@@ -1,5 +1,5 @@
 package com.jpacourse.dto;
-
+import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import jakarta.persistence.*;
@@ -24,6 +24,8 @@ public class PatientTO implements Serializable
     private String patientNumber;
 
     private LocalDate dateOfBirth;
+
+    private char gender;
 
     private List<VisitEntity> visits;
 
@@ -77,6 +79,20 @@ public class PatientTO implements Serializable
         this.patientNumber = patientNumber;
     }
 
+    public char getGender() {
+        return gender;
+    }
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+    public String getGenderAsString(){
+        switch (gender) {
+            case 'M' : return "MALE";
+            case 'F' : return "FEMALE";
+            default: return "UNKNOWN";
+        }
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -85,13 +101,8 @@ public class PatientTO implements Serializable
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setDoneVisits(VisitEntity visits){
-        List<VisitEntity> doneVisits = new ArrayList<>();
-        for (VisitEntity visit : visits) {
-            if (visit.isDone()) {
-                doneVisits.add(visit);
-            }
-        }
-        visits = doneVisits;
+    public void setDoneVisits(VisitEntity visits) {
+    }
+    public void setAddressTo(AddressTO addressTO) {
     }
 }
