@@ -1,15 +1,15 @@
 insert into address (id, address_line1, address_line2, city, postal_code)
-            values   (1,'Leśnicka 6','Lokal 2','Częstochowa','80-400'),
-                     (2,'Trzmielowicka 5','Lokal 4','Wrocław','60-400'),
-                     (3,'Kazimierza Wielkiego 45','Mieszkanie 4','Wrocław','54-500'),
-                     (4,'Strachowicka 8','Apartament 5','Wrocław','52-812'),
+            values   (1,'Lesnicka 6','Lokal 2','Czestochowa', '80-400'),
+                     (2,'Trzmielowicka 5','Lokal 4','Wroclaw','66-666'),
+                     (3,'Kazimierza Wielkiego 45','Mieszkanie 4','Wroclaw','54-500'),
+                     (4,'Strachowicka 8','Apartament 5','Wroclaw','52-812'),
                      (5,'Duboisa 9','Mieszkania 3','Warszawa','98-404'),
-                     (6,'Puławskiego 20','Mieszkanie 7','Łódź','67-450'),
-                     (7,'Jagodowa 2','Apartament 2','Gdańsk','40-320'),
-                     (8,'Wiśniowa 40','Mieszkania 18','Wrocław','56-200'),
-                     (9,'Oliwkowa 32','Lokal 40','Oleśnica','54-500'),
-                     (10,'Spiżowa 52','Lokal 24','Kielce','25-500'),
-                     (11,'Jarosławska 1','Lokal 1','Poznań','35-450');
+                     (6,'Puławskiego 20','Mieszkanie 7','Lodz','67-450'),
+                     (7,'Jagodowa 2','Apartament 2','Gdansk','40-320'),
+                     (8,'Wisniowa 40','Mieszkania 18','Wroclaw','56-200'),
+                     (9,'Oliwkowa 32','Lokal 40','Olesnica','54-500'),
+                     (10,'Spizowa 52','Lokal 24','Kielce','25-500'),
+                     (11,'Jaroslawska 1','Lokal 1','Poznan','35-450');
 
 insert into doctor (address_id, id, first_name, last_name, telephone_number, email, doctor_number, specialization)
             values (1, 101, 'Jan', 'Kowalski', '6039220123', 'Jankowalski00@gmail.com', 1001, 'OCULIST'),
@@ -27,8 +27,11 @@ insert into patient (date_of_birth, address_id, id, email, first_name, last_name
                    (PARSEDATETIME('20.11.1985', 'dd.MM.yyyy'), 10, 06, 'tytoty@o2.pl', 'Artur', 'Anton', 106, 693378590, 'M');
 
 insert into visit (doctor_id, id, patient_id, time, description)
-            values (101, 1, 01, PARSEDATETIME('18:00', 'HH:mm'), 'badanie wstępne');
-
+            values (101, 1, 01, PARSEDATETIME('18:00', 'HH:mm'), 'badanie wstępne'),
+                    (102, 2, 02, PARSEDATETIME('20:00', 'HH:mm'), 'badanie ogolne'),
+                    (103, 3, 03, PARSEDATETIME('11:00', 'HH:mm'), 'badanie ogolne'),
+                    (104, 4, 04, PARSEDATETIME('13:00', 'HH:mm'), 'badanie ogolne'),
+                    (105, 5, 05, PARSEDATETIME('14:00', 'HH:mm'), 'badanie ogolne');
 
 
 insert into medical_treatment (id, visit_id, description, type)

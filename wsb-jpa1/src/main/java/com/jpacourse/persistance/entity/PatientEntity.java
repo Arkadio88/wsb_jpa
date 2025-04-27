@@ -3,7 +3,7 @@ package com.jpacourse.persistance.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.annotation.Nullable;
+import com.jpacourse.dto.AddressTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -103,18 +103,16 @@ public class PatientEntity {
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 	private List<VisitEntity> visits;
 
-
 	public AddressEntity getAddress() { return (AddressEntity) address;
 	}
+	public List<VisitEntity> getDoneVisits() { return visits; }
+	public void setVisits(List<VisitEntity> visits) { this.visits = visits; }
 
-	public VisitEntity getDoneVists() { return (VisitEntity) visits;
-	}
 	@Transient
-	public String getGenderAsString(){
-		switch (gender) {
-			case 'M' : return "MALE";
-			case 'F' : return "FEMALE";
-			default: return "UNKNOWN";
-		}
+	public String getGenderAsString() {
+		return null;
+	}
+
+	public void setAddressTo(AddressTO addressTO) {
 	}
 }

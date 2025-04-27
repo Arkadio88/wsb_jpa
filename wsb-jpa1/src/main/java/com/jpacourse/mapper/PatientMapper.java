@@ -4,6 +4,9 @@ import com.jpacourse.dto.AddressTO;
 import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
+import com.jpacourse.persistance.entity.VisitEntity;
+
+import java.util.stream.Collector;
 
 public final class PatientMapper
 {
@@ -22,9 +25,26 @@ public final class PatientMapper
         patientTO.setTelephoneNumber(patientEntity.getTelephoneNumber());
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
-        patientTO.setDoneVisits(patientEntity.getDoneVists());
-
+        patientTO.setGender(patientEntity.getGenderAsString());
+        patientTO.setDoneVisits((VisitEntity) patientEntity.getDoneVisits());
         return patientTO;
+    }
+
+    public static PatientEntity mapToEntity(final PatientTO patientTO)
+    {
+        if (patientTO == null) {
+            return null;
+        }
+        final PatientEntity patientEntity = new PatientEntity();
+        patientEntity.setPatientNumber(patientTO.getPatientNumber());
+        patientEntity.setFirstName(patientTO.getFirstName());
+        patientEntity.setLastName(patientTO.getLastName());
+        patientEntity.setTelephoneNumber(patientTO.getTelephoneNumber());
+        patientEntity.setEmail(patientTO.getEmail());
+        patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
+        patientEntity.setGender(patientTO.getGender());
+
+        return patientEntity;
     }
     }
 

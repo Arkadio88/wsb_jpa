@@ -52,4 +52,5 @@ public class VisitEntity {
 
 	@OneToMany(mappedBy = "visit")
 	private Collection<MedicalTreatmentEntity> treatment;
+
 }

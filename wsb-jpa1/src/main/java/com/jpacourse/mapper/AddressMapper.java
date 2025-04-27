@@ -33,6 +33,7 @@ public final class AddressMapper
         addressEntity.setAddressLine2(addressTO.getAddressLine2());
         addressEntity.setCity(addressTO.getCity());
         addressEntity.setPostalCode(addressTO.getPostalCode());
+
         return addressEntity;
     }
 }

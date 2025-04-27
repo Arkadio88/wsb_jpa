@@ -105,4 +105,6 @@ public class PatientTO implements Serializable
     }
     public void setAddressTo(AddressTO addressTO) {
     }
+    public void setGender(String genderAsString) {
+    }
 }
