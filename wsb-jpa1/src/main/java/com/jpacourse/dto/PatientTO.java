@@ -1,12 +1,10 @@
 package com.jpacourse.dto;
-import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
-import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class PatientTO implements Serializable
@@ -101,7 +99,7 @@ public class PatientTO implements Serializable
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setDoneVisits(VisitEntity visits) {
+    public void setDoneVisits(Collection<VisitEntity> visits) {
     }
     public void setAddressTo(AddressTO addressTO) {
     }

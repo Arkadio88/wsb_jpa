@@ -6,6 +6,7 @@ import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 
+import java.util.Collection;
 import java.util.stream.Collector;
 
 public final class PatientMapper
@@ -26,7 +27,7 @@ public final class PatientMapper
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setGender(patientEntity.getGenderAsString());
-        patientTO.setDoneVisits((VisitEntity) patientEntity.getDoneVisits());
+        patientTO.setDoneVisits((Collection<VisitEntity>) patientEntity.getDoneVisits());
         return patientTO;
     }
 
