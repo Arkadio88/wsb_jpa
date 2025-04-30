@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -40,9 +41,22 @@ public class PatientDaoTest
         assertThat(patients).isNotNull();
         assertThat(patients).isNotEmpty();
         for (PatientEntity patient: patients) {
-            assertTrue(patient.getDoneVisits().size() >= minVisits,"Patient " + patient.getFirstName() + " " + patient.getLastName() + " has fewer than " + minVisits + " visits.");
+            assertTrue(patient.getDoneVisits().size() >= minVisits,"Patient " + patient.getFirstName() + " " + patient.getLastName() + " has fewer than " + minVisits + " visits.");}
+    }
+    @Transactional
+    @Test
+    public void testPatientGender(){
+        //given
+        final String partialGender = "M";
+        //when
+        Collection<PatientEntity> patients = patientDao.getPatientGender(partialGender);
+        //then
+        assertThat(patients).isNotNull();
+        assertThat(patients).isNotEmpty();
+        for (PatientEntity patient : patients) {
+            assertTrue(String.valueOf(patient.getGenderAsString()).contains(partialGender),
+                    "Patient " + patient.getFirstName() + " " + patient.getLastName() + " does not match gender fragment.");
         }
-
     }
 
 

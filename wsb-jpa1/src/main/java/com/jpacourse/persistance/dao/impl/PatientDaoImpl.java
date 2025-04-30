@@ -44,4 +44,12 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
 
     }
 
+    @Override
+    public Collection<PatientEntity> getPatientGender(final String partialGender) {
+        return entityManager
+                .createQuery("SELECT p FROM PatientEntity p WHERE p.gender = :gender", PatientEntity.class)
+                .setParameter("gender", partialGender.charAt(0))
+                .getResultList();
+    }
+
 }

@@ -15,4 +15,6 @@ public interface PatientDao extends Dao<PatientEntity, Long>
 
     Collection<VisitEntity> getPatientVisits (long patientId);
 
+    Collection<PatientEntity> getPatientGender (String gender);
+
 }
